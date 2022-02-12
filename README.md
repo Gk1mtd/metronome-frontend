@@ -1,6 +1,7 @@
-## Project Idea for Ironhack Module 3
-
 # MetronoMe
+
+## Description
+![wireframe](https://github.com/ignazka/metronome-backend/blob/master/wireframe.png?raw=true)
 An application for musicians.
 Artists are able to create setlists with BPM next to the song. BPM is editable.
 
@@ -10,7 +11,40 @@ Artists are able to create setlists with BPM next to the song. BPM is editable.
 * Tapping function
 * Maybe a Tuner
 
-* Routes
-* Components
+## ROUTES:
+GUESTs
+- /login -> Login
+- /signup -> Signup
+Private
+- /setlists ->Setlists
+- /create-setlist -> CreateSetlist
+- /song -> Song
+- /user -> User
 
-![Untitled-2022-02-12-1206(1)](https://user-images.githubusercontent.com/15696019/153709008-3cabec67-db94-4c9e-add0-799a68ed67cb.png)
+## Components
+Login
+Signup
+Setlists
+CreateSetlist
+Song
+User
+
+## Links
+
+### Trello/Kanban
+
+[Link to our Kanban board]()
+
+### Git
+
+The url to your repository and to your deployed project
+
+[Repository Link]()
+
+[Deploy Link]()
+
+### Slides
+
+The url to your presentation slides
+
+[Presentation Link]()
