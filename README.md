@@ -1,9 +1,8 @@
 ## Project Idea for Ironhack Module 3
 
 # MetronoMe
-An application for musicians. 
-More than a metronom though:
-* Set BPM for each song in a song list
+An application for musicians.
+Artists are able to create setlists with BPM next to the song. BPM is editable.
 
 ## Backlog
 * Fullscreen visualization of beat
