@@ -7,6 +7,6 @@ More than a metronom though:
 
 ## Backlog
 * Fullscreen visualization of beat
-* * Different Click Sounds
-* * Tapping function
-* * Maybe a Tuner
+* Different Click Sounds
+* Tapping function
+* Maybe a Tuner
