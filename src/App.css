@@ -11,3 +11,10 @@ button {
 }
 .Home {
 }
+
+.Error {
+  background-color: tomato;
+  color: black;
+  font-size: 3em;
+  height: 100vh;
+}
