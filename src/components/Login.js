@@ -1,12 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useLogin from '../customHooks/login';
 
 function Login() {
-  const { login } = useLogin();
+  const { login, responseMessage } = useLogin();
+
+  /** if the user is not existent, then the client will invite to signup */
+  function renderErrorParser() {
+    switch (responseMessage?.message) {
+      case 'User not found, please Signup':
+        return (
+          <p>
+            User does not exist ...yet ;) please{' '}
+            <Link to='/signup'>Signup</Link>
+          </p>
+        );
+      default:
+        return <p>{responseMessage?.message}</p>;
+    }
+  }
 
   return (
     <div className='Login'>
       Login
+      {renderErrorParser()}
       <form
         onSubmit={event => {
           event.preventDefault();
