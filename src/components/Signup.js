@@ -2,12 +2,12 @@ import React from 'react';
 import useSignup from '../customHooks/signup';
 
 function Signup() {
-  const { submitNewUser } = useSignup();
+  const { submitNewUser, responseMessage } = useSignup();
 
   return (
     <div className='Signup'>
       <h1>Signup</h1>
-
+      {responseMessage && <p>{responseMessage.message}</p>}
       <form
         onSubmit={event => {
           event.preventDefault();
