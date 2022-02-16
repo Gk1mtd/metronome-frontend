@@ -6,6 +6,7 @@ import Setlists from './components/Setlists';
 import User from './components/User';
 import Error from './components/Error';
 import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 import { Link, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -20,22 +21,44 @@ function App() {
           path='/user'
           element={
             /** Private Route does have target component as child and 
-            checks if user is in local storage */
+            checks if user is in local storage, returns target component*/
             <PrivateRoute>
               <User />
             </PrivateRoute>
           }
         />
-
-        <Route exact path='/' element={<Home />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
         <Route
           path='/setlists'
           element={
             <PrivateRoute>
               <Setlists />
             </PrivateRoute>
+          }
+        />
+        {/** Public Routes - only for not users */}
+        <Route
+          exact
+          path='/'
+          element={
+            <PublicRoute>
+              <Home />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path='/signup'
+          element={
+            <PublicRoute>
+              <Signup />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path='/login'
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
           }
         />
         <Route path='/*' element={<Error />} />
