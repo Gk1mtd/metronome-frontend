@@ -3,6 +3,11 @@ import axios from 'axios';
 import { constants } from '../constants';
 import { useNavigate } from 'react-router-dom';
 
+const api = axios.create({
+  baseURL: 'http://localhost:4000/api',
+  withCredentials: true,
+});
+
 function User() {
   const { user } = localStorage;
   console.log(localStorage);
@@ -19,18 +24,20 @@ function User() {
   }
   async function deleteUser() {
     try {
-      await axios.post(constants.baseUrl + '/delete-user');
+      console.log('start to delete');
+      await api.delete('/deleteuser', { headers: { user } });
+      console.log('user deleted, going to redirect');
       navigateTo('/');
+      //   logOut();
     } catch (error) {
       console.log(error);
     }
-    logOut();
   }
 
   return (
     <div>
       User
-      {localStorage.getItem('user')}
+      {<p>local user is: {user}</p>}
       <button onClick={logOut}>logout</button>
       <button onClick={deleteUser}>delete account</button>
     </div>

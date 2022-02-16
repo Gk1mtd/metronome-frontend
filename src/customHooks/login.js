@@ -10,7 +10,10 @@ import { useNavigate } from 'react-router-dom';
 function useLogin() {
   /**used for redirection  */
   const navigateTo = useNavigate();
-  const api = axios.create({ baseURL: constants.baseUrl });
+  const api = axios.create({
+    baseURL: constants.baseUrl,
+    withCredentials: true,
+  });
 
   // hook/state to save error response from API request
   const [responseMessage, setResponseMessage] = React.useState();
