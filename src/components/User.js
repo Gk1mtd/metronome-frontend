@@ -4,7 +4,7 @@ import { constants } from '../constants';
 import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  baseURL: constants.baseUrl,
   withCredentials: true,
 });
 
