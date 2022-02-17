@@ -1,8 +1,9 @@
 import React from 'react';
-import useSignup from '../customHooks/signup';
+import useAPI from '../customHooks/api';
 
+/** uses api custom hook to sign up a new user */
 function Signup() {
-  const { submitNewUser, responseMessage } = useSignup();
+  const { submitNewUser, responseMessage } = useAPI();
 
   return (
     <div className='Signup'>

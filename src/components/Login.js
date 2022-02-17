@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useLogin from '../customHooks/login';
+import useAPI from '../customHooks/api';
 
 function Login() {
-  const { login, responseMessage } = useLogin();
+  const { login, responseMessage } = useAPI();
 
   /** if the user is not existent, then the client will invite to signup */
   function renderErrorParser() {
@@ -23,7 +23,7 @@ function Login() {
   return (
     <div className='Login'>
       Login
-      {renderErrorParser()}
+      {renderErrorParser()} {// parses the error message from api hook to show the right message}
       <form
         onSubmit={event => {
           event.preventDefault();
