@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className='Home'>
       <h1>Home</h1>
-      <img src='https://metroknowme.netlify.app/logo512.png' alt='logo' />
+      <img src='https://metroknowme.netlify.app/logo512.png' alt='logo2' />
       <Link to='/signup'>Signup</Link>
       <Link to='/login'>Login</Link>
     </div>
