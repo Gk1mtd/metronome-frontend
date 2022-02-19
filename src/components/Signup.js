@@ -1,5 +1,5 @@
 import React from 'react';
-import useAPI from '../customHooks/api';
+import useAPI from '../customHooks/user.api';
 
 /** uses api custom hook to sign up a new user */
 function Signup() {

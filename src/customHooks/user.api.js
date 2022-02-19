@@ -25,7 +25,9 @@ function useAPI() {
        *  user id can be accessed for private routing
        *  router can recognise if user is logged in
        */
-      localStorage.setItem('user', data.id);
+       localStorage.setItem('user', data.id);
+       localStorage.setItem('email', data.email);
+      //  console.log(localStorage.getItem("email"));
       /** redirects to setlist, if axios request is succesfull */
       navigateTo('/setlists');
     } catch (error) {
