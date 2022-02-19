@@ -1,24 +1,22 @@
-import './App.css';
-import Home from './components/Home';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Setlists from './components/Setlists';
-import User from './components/User';
-import Error from './components/Error';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
-import { Link, Routes, Route } from 'react-router-dom';
+import "./App.css";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Setlists from "./components/Setlists";
+import User from "./components/User";
+import Error from "./components/Error";
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+import { Link, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className='App'>
-      <Link to='/user'>User</Link>
-
+    <div className="App">
       {/** Private Routes */}
       <Routes>
         {/* add PrivateRoute Component to element property*/}
         <Route
-          path='/user'
+          path="/user"
           element={
             /** Private Route does have target component as child and 
             checks if user is in local storage, returns target component*/
@@ -28,7 +26,7 @@ function App() {
           }
         />
         <Route
-          path='/setlists'
+          path="/setlists"
           element={
             <PrivateRoute>
               <Setlists />
@@ -38,7 +36,7 @@ function App() {
         {/** Public Routes - only for not users */}
         <Route
           exact
-          path='/'
+          path="/"
           element={
             <PublicRoute>
               <Home />
@@ -46,7 +44,7 @@ function App() {
           }
         />
         <Route
-          path='/signup'
+          path="/signup"
           element={
             <PublicRoute>
               <Signup />
@@ -54,14 +52,14 @@ function App() {
           }
         />
         <Route
-          path='/login'
+          path="/login"
           element={
             <PublicRoute>
               <Login />
             </PublicRoute>
           }
         />
-        <Route path='/*' element={<Error />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </div>
   );
