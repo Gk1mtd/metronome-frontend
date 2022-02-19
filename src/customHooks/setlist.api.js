@@ -11,6 +11,7 @@ function useSetlistAPI() {
   /** holds the error messages to rerender a component with the message */
 
   const [responseMessage, setResponseMessage] = React.useState();
+  const [setlist, setSetlist] = React.useState([]);
   const navigateTo = useNavigate();
 
   const api = axios.create({
@@ -18,8 +19,7 @@ function useSetlistAPI() {
     withCredentials: true,
   });
 
-  const [setlist, setSetlist] = React.useState([]);
-
+  /** retrieves all setlists from the current user, sets the state for auto rerender */
   async function getAllSetlists() {
     try {
       const { data } = await api.get("setlist/getall-setlists");
@@ -27,11 +27,20 @@ function useSetlistAPI() {
     } catch (error) {}
   }
 
+  /** creates a new setlist and calls getallSetlists for rerender again */
+  async function createSetlist(newSetlist) {
+    try {
+      await api.post("/setlist/create-setlist", { name: newSetlist });
+      getAllSetlists()
+    } catch (error) {}
+  }
+
+  /** gets all setlists at initial rendering */
   React.useEffect(() => {
     getAllSetlists();
   }, []);
 
-  return { getAllSetlists, responseMessage, setlist };
+  return { getAllSetlists, createSetlist, responseMessage, setlist };
 }
 
 export default useSetlistAPI;
