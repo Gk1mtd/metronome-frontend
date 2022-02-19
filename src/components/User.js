@@ -1,5 +1,6 @@
 import React from 'react';
-import useAPI from '../customHooks/api';
+import useAPI from '../customHooks/user.api';
+import {Link} from 'react-router-dom'
 
 /** provides logout and delteuser through custom hook api
  * shows currently logged in user
@@ -7,12 +8,12 @@ import useAPI from '../customHooks/api';
 function User() {
   const { logout, deleteUser } = useAPI();
 
-  const user = localStorage.getItem('user');
+  const email = localStorage.getItem('email');
 
   return (
     <div>
-      User
-      {<p>local user is: {user}</p>}
+      <Link to='/setlists'>back to Setlists</Link>
+      <p>local user is: </p> {email}
       <button onClick={logout}>logout</button>
       <button onClick={deleteUser}>delete account</button>
     </div>
