@@ -23,7 +23,7 @@ function Login() {
   return (
     <div className='Login'>
       Login
-      {renderErrorParser()} {// parses the error message from api hook to show the right message}
+      {renderErrorParser()} {/**parses the error message from api hook to show the right message */}
       <form
         onSubmit={event => {
           event.preventDefault();
