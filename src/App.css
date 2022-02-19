@@ -18,3 +18,7 @@ button {
   font-size: 3em;
   height: 100vh;
 }
+
+.user-icon {
+  width: 50px;
+}
