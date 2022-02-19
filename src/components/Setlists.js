@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import useSetlistAPI from "../customHooks/setlist.api";
 
 function Setlists() {
-  const { setlist } = useSetlistAPI();
+  const { setlist, createSetlist } = useSetlistAPI();
+
 
   return (
     <div className="Setlists">
@@ -16,6 +17,16 @@ function Setlists() {
       {setlist.map((element) => (
         <p key={element._id}>{element.name}</p>
       ))}
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          console.log(event.target.name.value)
+          createSetlist(event.target.name.value);
+        }}
+      >
+        <button type="submit">+</button>
+        <input name="name" placeholder="New Setlist Name"></input>
+      </form>
     </div>
   );
 }
