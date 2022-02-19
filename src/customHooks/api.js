@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React from 'react';
-import { constants } from '../constants';
 import { useNavigate } from 'react-router-dom';
+/**
+ * easy to import hardcoded paths, used across the whole project
+ */
+const { REACT_APP_API_URL } = process.env;
 
 /** provides the app with MERN functionality */
 function useAPI() {
@@ -10,7 +13,7 @@ function useAPI() {
   const navigateTo = useNavigate();
 
   const api = axios.create({
-    baseURL: constants.baseUrl, //ATTENTION, for deployment use baseUrl for dev use baseUrl_local!!!
+    baseURL: REACT_APP_API_URL, //ATTENTION, for deployment use baseUrl for dev use baseUrl_local!!!
     withCredentials: true,
   });
 
