@@ -6,8 +6,9 @@ import Setlists from "./components/Setlists";
 import User from "./components/User";
 import Error from "./components/Error";
 import PrivateRoute from "./components/PrivateRoute";
+import Setlist from "./components/Setlist";
 import PublicRoute from "./components/PublicRoute";
-import { Link, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
           element={
             <PrivateRoute>
               <Setlists />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/setlists/:id"
+          element={
+            <PrivateRoute>
+              <Setlist />
             </PrivateRoute>
           }
         />
