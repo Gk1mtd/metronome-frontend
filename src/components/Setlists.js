@@ -6,7 +6,6 @@ import useSetlistAPI from "../customHooks/setlist.api";
 function Setlists() {
   const { setlist, createSetlist } = useSetlistAPI();
 
-
   return (
     <div className="Setlists">
       <Link to="/user">
@@ -15,13 +14,15 @@ function Setlists() {
       <h1>Setlists</h1>
       {/** prints setlists from user, gained from custom hook usesetlistapi */}
       {setlist.map((element) => (
-        <p key={element._id}>{element.name}</p>
+        <Link to={`/setlists/${element._id}`}>
+          <p key={element._id}>{element.name}</p>
+        </Link>
       ))}
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          console.log(event.target.name.value)
           createSetlist(event.target.name.value);
+          event.target.name.value = "";
         }}
       >
         <button type="submit">+</button>
