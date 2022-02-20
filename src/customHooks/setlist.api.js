@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 /**
  * easy to import hardcoded paths, used across the whole project
  */
@@ -12,7 +12,7 @@ function useSetlistAPI() {
 
   const [responseMessage, setResponseMessage] = React.useState();
   const [setlist, setSetlist] = React.useState([]);
-  const navigateTo = useNavigate();
+  // const navigateTo = useNavigate();
 
   const api = axios.create({
     baseURL: REACT_APP_API_URL, //ATTENTION, for deployment use baseUrl for dev use baseUrl_local!!!
@@ -31,7 +31,14 @@ function useSetlistAPI() {
   async function createSetlist(newSetlist) {
     try {
       await api.post("/setlist/create-setlist", { name: newSetlist });
-      getAllSetlists()
+      getAllSetlists();
+    } catch (error) {}
+  }
+
+  async function getSetlist(setlistId) {
+    try {
+      const { data } = await api.get(`/setlist/get-setlist/${setlistId}`);
+      setSetlist(data);
     } catch (error) {}
   }
 
@@ -40,7 +47,13 @@ function useSetlistAPI() {
     getAllSetlists();
   }, []);
 
-  return { getAllSetlists, createSetlist, responseMessage, setlist };
+  return {
+    getSetlist,
+    getAllSetlists,
+    createSetlist,
+    responseMessage,
+    setlist,
+  };
 }
 
 export default useSetlistAPI;
