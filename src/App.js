@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Setlists from "./components/Setlists";
+import Song from './components/Song'
 import User from "./components/User";
 import Error from "./components/Error";
 import PrivateRoute from "./components/PrivateRoute";
@@ -35,13 +36,16 @@ function App() {
           }
         />
         <Route
-          path="/setlists/:id"
+          path="/setlists/:setlistId"
           element={
             <PrivateRoute>
               <Setlist />
             </PrivateRoute>
           }
         />
+        <Route path='/setlist/:setlistId/song' element={<PrivateRoute><Song /></PrivateRoute>}/>
+        <Route path='/setlist/:setlistId/song/:songId' element={<PrivateRoute><Song /></PrivateRoute>}/>
+        
         {/** Public Routes - only for not users */}
         <Route
           exact
