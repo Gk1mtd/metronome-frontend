@@ -11,7 +11,10 @@ function useSetlistAPI() {
   /** holds the error messages to rerender a component with the message */
 
   const [responseMessage, setResponseMessage] = React.useState();
-  const [setlist, setSetlist] = React.useState([]);
+  /** this state uses null, because Setlist Component tries otherwise 
+   * to access an empty array, which leads to errors */
+  const [setlist, setSetlist] = React.useState(null);
+  const [setlists, setSetlists] = React.useState([]);
   // const navigateTo = useNavigate();
 
   const api = axios.create({
@@ -23,7 +26,7 @@ function useSetlistAPI() {
   async function getAllSetlists() {
     try {
       const { data } = await api.get("setlist/getall-setlists");
-      setSetlist(data);
+      setSetlists(data);
     } catch (error) {}
   }
 
@@ -52,7 +55,8 @@ function useSetlistAPI() {
     getAllSetlists,
     createSetlist,
     responseMessage,
-    setlist,
+    setlists,
+    setlist
   };
 }
 
