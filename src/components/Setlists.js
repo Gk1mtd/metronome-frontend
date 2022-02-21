@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useSetlistAPI from "../customHooks/setlist.api";
 
 function Setlists() {
-  const { setlist, createSetlist } = useSetlistAPI();
+  const { setlists, createSetlist } = useSetlistAPI();
 
   return (
     <div className="Setlists">
@@ -13,7 +13,7 @@ function Setlists() {
       </Link>
       <h1>Setlists</h1>
       {/** prints setlists from user, gained from custom hook usesetlistapi */}
-      {setlist.map((element) => (
+      {setlists.map((element) => (
         <Link to={`/setlists/${element._id}`}>
           <p key={element._id}>{element.name}</p>
         </Link>
