@@ -4,7 +4,6 @@ import useSetlistAPI from "../customHooks/setlist.api";
 import useSongAPI from "../customHooks/song.api";
 function Setlist() {
   const { setlistId } = useParams();
-  console.log('useParams', useParams())
   const { setlist, getSetlist, setSetlist } = useSetlistAPI();
   const { createSong } = useSongAPI();
 
