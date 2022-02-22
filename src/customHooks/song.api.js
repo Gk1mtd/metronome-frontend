@@ -15,7 +15,6 @@ function useSongAPI() {
 
   async function createSong(songBody) {
     try {
-        console.log('createSong param songBody ', songBody)
       const { data } = await api.post("/song", songBody);
     } catch (error) {
       console.log("Something went wrong during song creation", error);
@@ -36,15 +35,15 @@ function useSongAPI() {
       console.log("Something went wrong during song update", error);
     }
   }
-  async function deleteSong(songId) {
+  async function deleteSong(setlistId, songId) {
     try {
-      await api.delete(`/song`, {songId});
+      await api.delete(`/setlist/${setlistId}/song/${songId}`);
     } catch (error) {
       console.log("Something went wrong during song deletion", error);
     }
   }
 
-  return {createSong, getSongById, song};
+  return { createSong, getSongById, deleteSong, song };
 }
 
 export default useSongAPI;
