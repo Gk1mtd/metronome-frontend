@@ -14,7 +14,7 @@ function Setlists() {
       <h1>Setlists</h1>
       {/** prints setlists from user, gained from custom hook usesetlistapi */}
       {setlists.map((element) => (
-        <Link to={`/setlists/${element._id}`}>
+        <Link key={element._id} to={`/setlists/${element._id}`}>
           <p key={element._id}>{element.name}</p>
         </Link>
       ))}
