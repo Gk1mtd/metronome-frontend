@@ -3,17 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import useSongAPI from "../customHooks/song.api";
 
 function Song() {
-  const { createSong, getSongById, song } = useSongAPI();
+  const { createSong, getSongById, deleteSong, song } = useSongAPI();
   const { setlistId, songId } = useParams();
   const navigateTo = useNavigate();
-    console.log(song);
-  // hole song von server
-  // trage daten vom song in die form ein
-
 
   React.useEffect(() => {
     getSongById(songId);
-    
   }, []);
 
   return (
@@ -28,13 +23,12 @@ function Song() {
             notes: event.target.notes.value,
             setlistId,
           };
-          console.log("event target", event.target);
           createSong(body);
           navigateTo(`/setlists`);
         }}
-      > 
-      {/* try to set value from database as value of input field*/}
-        <input value={song?.name || ''} name="name" placeholder="Song Name"></input>
+      >
+        {/* try to set value from database as value of input field*/}
+        <input name="name" placeholder="Song Name"></input>
         <br />
         <input name="bpm" type="number" placeholder="BPM"></input>
         <br />
@@ -45,7 +39,14 @@ function Song() {
         <br />
         <button type="submit">Save</button>
       </form>
-      <button>Delete</button>
+      <button
+        onClick={() => {
+          deleteSong(setlistId, songId);
+          navigateTo("/setlists");
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 }
