@@ -22,3 +22,7 @@ button {
 .user-icon {
   width: 50px;
 }
+
+.song-card {
+  background: rgba(23, 0, 29, 0.322)
+}

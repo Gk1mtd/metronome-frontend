@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 /**
  * easy to import hardcoded paths, used across the whole project
  */
@@ -11,8 +11,11 @@ function useSetlistAPI() {
   /** holds the error messages to rerender a component with the message */
 
   const [responseMessage, setResponseMessage] = React.useState();
-  const [setlist, setSetlist] = React.useState([]);
-  const navigateTo = useNavigate();
+  /** this state uses null, because Setlist Component tries otherwise 
+   * to access an empty array, which leads to errors */
+  const [setlist, setSetlist] = React.useState(null);
+  const [setlists, setSetlists] = React.useState([]);
+  // const navigateTo = useNavigate();
 
   const api = axios.create({
     baseURL: REACT_APP_API_URL, //ATTENTION, for deployment use baseUrl for dev use baseUrl_local!!!
@@ -23,7 +26,7 @@ function useSetlistAPI() {
   async function getAllSetlists() {
     try {
       const { data } = await api.get("setlist/getall-setlists");
-      setSetlist(data);
+      setSetlists(data);
     } catch (error) {}
   }
 
@@ -31,7 +34,14 @@ function useSetlistAPI() {
   async function createSetlist(newSetlist) {
     try {
       await api.post("/setlist/create-setlist", { name: newSetlist });
-      getAllSetlists()
+      getAllSetlists();
+    } catch (error) {}
+  }
+
+  async function getSetlist(setlistId) {
+    try {
+      const { data } = await api.get(`/setlist/get-setlist/${setlistId}`);
+      setSetlist(data);
     } catch (error) {}
   }
 
@@ -40,7 +50,14 @@ function useSetlistAPI() {
     getAllSetlists();
   }, []);
 
-  return { getAllSetlists, createSetlist, responseMessage, setlist };
+  return {
+    getSetlist,
+    getAllSetlists,
+    createSetlist,
+    responseMessage,
+    setlists,
+    setlist
+  };
 }
 
 export default useSetlistAPI;
