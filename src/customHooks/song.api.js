@@ -14,25 +14,11 @@ function useSongAPI() {
   const [song, setSong] = React.useState(null);
   const [songs, setSongs] = React.useState(null);
 
-  async function createSong(songBody) {
-    try {
-      const { data } = await api.post("/song", songBody);
-    } catch (error) {
-      console.error("Something went wrong during song creation", error);
-    }
-  }
+  // api functions
   async function getSongById(songId) {
     try {
       const { data } = await api.get(`/song/${songId}`);
       setSong(data);
-    } catch (error) {
-      console.error("Something went wrong during song retrieval", error);
-    }
-  }
-  async function getAllSongs(setlistId) {
-    try {
-      const { data } = await api.get(`/setlist/${setlistId}`);
-      setSongs(data);
     } catch (error) {
       console.error("Something went wrong during song retrieval", error);
     }
@@ -45,6 +31,7 @@ function useSongAPI() {
       console.error("Something went wrong during song update", error);
     }
   }
+  
   async function deleteSong(setlistId, songId) {
     try {
       await api.delete(`/setlist/${setlistId}/song/${songId}`);
@@ -53,7 +40,7 @@ function useSongAPI() {
     }
   }
 
-  return { createSong, getSongById, deleteSong, getAllSongs, song, songs };
+  return { getSongById, deleteSong, song, songs };
 }
 
 export default useSongAPI;
