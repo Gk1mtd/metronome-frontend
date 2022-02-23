@@ -27,7 +27,6 @@ function useAPI() {
        */
        localStorage.setItem('user', data.id);
        localStorage.setItem('email', data.email);
-      //  console.log(localStorage.getItem("email"));
       /** redirects to setlist, if axios request is succesfull */
       navigateTo('/setlists');
     } catch (error) {
@@ -57,7 +56,7 @@ function useAPI() {
       await api.post('/logout');
       navigateTo('/');
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setResponseMessage({ message: error.response.data.message });
     }
   }
@@ -65,12 +64,10 @@ function useAPI() {
   /** deletes user through api call, calls logout to deletes localstorage and redirect to home */
   async function deleteUser() {
     try {
-      console.log('start to delete');
       await api.delete('/deleteuser');
-      console.log('user deleted, going to redirect');
       logout();
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setResponseMessage({ message: error.response.data.message });
     }
   }

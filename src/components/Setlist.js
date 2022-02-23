@@ -14,7 +14,6 @@ function Setlist() {
   async function getSetlist() {
     try {
       const { data } = await api.get(`/setlist/get-setlist/${setlistId}`);
-      console.log("in getsetlist", data);
       await setSetlist({ ...setlist, ...data });
     } catch (error) {}
   }
@@ -24,14 +23,12 @@ function Setlist() {
       await api.post("/song", songBody);
       await getSetlist();
     } catch (error) {
-      console.log("Something went wrong during song creation", error);
+      console.error("Something went wrong during song creation", error);
     }
   }
 
   React.useEffect(() => {
-    console.log("in useeffect davor", setlist);
     getSetlist();
-    console.log("in useeffect danach", setlist);
   }, [setlist?.songs?.length]);
 
   return (
