@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
 
@@ -10,20 +10,27 @@ function Setlist() {
   });
   const [setlist, setSetlist] = React.useState();
   const { setlistId } = useParams();
+  const navigateTo = useNavigate();
 
+  async function createSong(songBody) {
+    try {
+      await api.post("/song", songBody);
+      getSetlist();
+    } catch (error) {
+      console.error("Something went wrong during song creation", error);
+    }
+  }
   async function getSetlist() {
     try {
       const { data } = await api.get(`/setlist/get-setlist/${setlistId}`);
       await setSetlist({ ...setlist, ...data });
     } catch (error) {}
   }
-
-  async function createSong(songBody) {
+  async function deleteSetlist() {
     try {
-      await api.post("/song", songBody);
-      await getSetlist();
+      await api.delete(`/setlist/delete-setlist/${setlistId}`);
     } catch (error) {
-      console.error("Something went wrong during song creation", error);
+      console.error(error);
     }
   }
 
@@ -62,8 +69,8 @@ function Setlist() {
       <br />
       <button
         onClick={() => {
-          // deleteSetlist(setlistId, songId);
-          // navigateTo("/setlists");
+          deleteSetlist();
+          navigateTo("/setlists");
         }}
       >
         Delete Setlist
