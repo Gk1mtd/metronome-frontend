@@ -36,7 +36,7 @@ function App() {
           }
         />
         <Route
-          path="/setlists/:setlistId"
+          path="/setlist/:setlistId"
           element={
             <PrivateRoute>
               <Setlist />
