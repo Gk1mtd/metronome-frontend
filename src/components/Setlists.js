@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import useSetlistAPI from "../customHooks/setlist.api";
 
 function Setlists() {
-  const { setlists, createSetlist } = useSetlistAPI();
+  const { setlists, createSetlist, getAllSetlists } = useSetlistAPI();
+
+  React.useEffect(() => {
+    getAllSetlists();
+  }, []);
 
   return (
     <div className="Setlists">
@@ -14,7 +18,7 @@ function Setlists() {
       <h1>Setlists</h1>
       {/** prints setlists from user, gained from custom hook usesetlistapi */}
       {setlists.map((element) => (
-        <Link key={element._id} to={`/setlists/${element._id}`}>
+        <Link key={element._id} to={`/setlist/${element._id}`}>
           <p key={element._id}>{element.name}</p>
         </Link>
       ))}

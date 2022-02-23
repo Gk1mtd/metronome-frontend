@@ -1,15 +1,23 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useSongAPI from "../customHooks/song.api";
+import axios from "axios";
+const { REACT_APP_API_URL } = process.env;
 
 function Song() {
-  const { createSong, getSongById, deleteSong, song } = useSongAPI();
-  const { setlistId, songId } = useParams();
-  const navigateTo = useNavigate();
+  const { songId, setlistId } = useParams();
+  const api = axios.create({
+    baseURL: REACT_APP_API_URL,
+    withCredentials: true,
+  });
 
-  React.useEffect(() => {
-    getSongById(songId);
-  }, []);
+  const navigateTo = useNavigate();
+  async function deleteSong(setlistId, songId) {
+    try {
+      await api.delete(`/setlist/${setlistId}/song/${songId}`);
+    } catch (error) {
+      console.log("Something went wrong during song deletion", error);
+    }
+  }
 
   return (
     <div>
@@ -23,8 +31,7 @@ function Song() {
             notes: event.target.notes.value,
             setlistId,
           };
-          createSong(body);
-          navigateTo(`/setlists`);
+          navigateTo(`/setlist/${setlistId}`);
         }}
       >
         {/* try to set value from database as value of input field*/}
@@ -42,7 +49,8 @@ function Song() {
       <button
         onClick={() => {
           deleteSong(setlistId, songId);
-          navigateTo("/setlists");
+          navigateTo(-1);
+          // navigateTo(`/setlists`);
         }}
       >
         Delete
