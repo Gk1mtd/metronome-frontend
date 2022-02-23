@@ -15,7 +15,7 @@ function Song() {
     try {
       await api.delete(`/setlist/${setlistId}/song/${songId}`);
     } catch (error) {
-      console.log("Something went wrong during song deletion", error);
+      console.error("Something went wrong during song deletion", error);
     }
   }
 

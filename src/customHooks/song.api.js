@@ -14,29 +14,13 @@ function useSongAPI() {
   const [song, setSong] = React.useState(null);
   const [songs, setSongs] = React.useState(null);
 
-  async function createSong(songBody) {
-    try {
-      const { data } = await api.post("/song", songBody);
-    } catch (error) {
-      console.log("Something went wrong during song creation", error);
-    }
-  }
+  // api functions
   async function getSongById(songId) {
     try {
       const { data } = await api.get(`/song/${songId}`);
       setSong(data);
     } catch (error) {
-      console.log("Something went wrong during song retrieval", error);
-    }
-  }
-  async function getAllSongs(setlistId) {
-    try {
-      console.log("setlistId: ", setlistId);
-      const { data } = await api.get(`/setlist/${setlistId}`);
-      console.log(data);
-      setSongs(data);
-    } catch (error) {
-      console.log("Something went wrong during song retrieval", error);
+      console.error("Something went wrong during song retrieval", error);
     }
   }
 
@@ -44,18 +28,19 @@ function useSongAPI() {
     try {
       await api.put("/song", { updatedSong, songId });
     } catch (error) {
-      console.log("Something went wrong during song update", error);
+      console.error("Something went wrong during song update", error);
     }
   }
+  
   async function deleteSong(setlistId, songId) {
     try {
       await api.delete(`/setlist/${setlistId}/song/${songId}`);
     } catch (error) {
-      console.log("Something went wrong during song deletion", error);
+      console.error("Something went wrong during song deletion", error);
     }
   }
 
-  return { createSong, getSongById, deleteSong, getAllSongs, song, songs };
+  return { getSongById, deleteSong, song, songs };
 }
 
 export default useSongAPI;

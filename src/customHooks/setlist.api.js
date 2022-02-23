@@ -28,13 +28,6 @@ function useSetlistAPI() {
     } catch (error) {}
   }
 
-  async function getSetlist() {
-    try {
-      const { data } = await api.get(`/setlist/get-setlist/${setlistId}`);
-      setSetlist({...setlist, ...data});
-    } catch (error) {}
-  }
-
   /** retrieves all setlists from the current user, sets the state for auto rerender */
   async function getAllSetlists() {
     try {
@@ -43,15 +36,7 @@ function useSetlistAPI() {
     } catch (error) {}
   }
 
-  async function deleteSetlist(setlistId) {
-    try {
-      const { data } = await api.get(`/setlist/get-setlist/${setlistId}`);
-      setSetlist(data);
-    } catch (error) {}
-  }
-
   return {
-    getSetlist,
     getAllSetlists,
     createSetlist,
     responseMessage,
