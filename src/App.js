@@ -10,8 +10,18 @@ import PrivateRoute from "./components/PrivateRoute";
 import Setlist from "./components/Setlist";
 import PublicRoute from "./components/PublicRoute";
 import { Routes, Route } from "react-router-dom";
+import axios from "axios";
+import React from "react";
+const { REACT_APP_API_URL } = process.env;
+const api = axios.create({
+  baseURL: REACT_APP_API_URL, //ATTENTION, for deployment use baseUrl for dev use baseUrl_local!!!
+  withCredentials: true,
+});
 
 function App() {
+React.useEffect(()=>{
+  api.get("/logged-in-user").then(({data}) => console.log("data: ", data))
+}, [])
   return (
     <div className="App">
       {/** Private Routes */}
