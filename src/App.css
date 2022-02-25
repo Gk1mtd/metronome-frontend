@@ -77,6 +77,10 @@ button:hover {
   width: 70%;
   margin: 0 15%;
 }
+input {
+  font-size: 1em;
+  text-align: center;
+}
 
 .Error {
   background-color: tomato;
