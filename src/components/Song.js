@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
 
@@ -21,6 +21,8 @@ function Song() {
 
   return (
     <div>
+    <Link to={`/setlist/${setlistId}`}>back to Setlist</Link>
+    <br/>
       Song
       <form
         onSubmit={(event) => {
