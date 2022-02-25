@@ -12,15 +12,17 @@ function Setlists() {
 
   return (
     <div className="Setlists">
-      <Link to="/user">
+      <Link className="user-icon-link" to="/user">
         <img className="user-icon" src={userIcon} alt="user icon" />
       </Link>
       <h1>Setlists</h1>
       {/** prints setlists from user, gained from custom hook usesetlistapi */}
       {setlists.map((element) => (
-        <Link key={element._id} to={`/setlist/${element._id}`}>
-          <p key={element._id}>{element.name}</p>
-        </Link>
+        <div className="setlist-card" key={element._id}>
+          <Link to={`/setlist/${element._id}`}>
+            <p key={element._id}>{element.name}</p>
+          </Link>
+        </div>
       ))}
       <form
         onSubmit={(event) => {
