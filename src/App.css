@@ -89,8 +89,36 @@ input {
   height: 100vh;
 }
 
+.user-icon-link {
+  box-shadow: none;
+  position: relative;
+  margin: 50px 0 0 85%;
+}
 .user-icon {
   width: 50px;
+  border: none;
+  margin-top: 5%;
+  margin-right: 5%;
+}
+.Setlists a {
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  box-shadow: none;
+  margin-bottom: 25px;
+}
+.Setlists button {
+  font-size: 3rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  box-shadow: none;
+  padding: 5px;
+  margin-top: 25px;
+}
+.setlist-card {
+  box-shadow: 0 0 2px 1px white;
+  border-radius: 15px;
 }
 
 .song-card {
