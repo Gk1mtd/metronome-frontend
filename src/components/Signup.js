@@ -1,16 +1,16 @@
-import React from 'react';
-import useAPI from '../customHooks/user.api';
+import React from "react";
+import useAPI from "../customHooks/user.api";
 
 /** uses api custom hook to sign up a new user */
 function Signup() {
   const { submitNewUser, responseMessage } = useAPI();
 
   return (
-    <div className='Signup'>
+    <div className="Signup">
       <h1>Signup</h1>
       {responseMessage && <p>{responseMessage.message}</p>}
       <form
-        onSubmit={event => {
+        onSubmit={(event) => {
           event.preventDefault();
           const newUser = {
             email: event.target.email.value,
@@ -19,15 +19,11 @@ function Signup() {
           submitNewUser(newUser);
         }}
       >
-        <label htmlFor='email'>
-          Email:
-          <input name='email' type='email'></input>
-        </label>
-        <label htmlFor='password'>
-          Password:
-          <input name='password' type='password'></input>
-        </label>
-        <button type='submit'>Create new Account</button>
+        <label htmlFor="email">Email</label>
+        <input name="email" type="email"></input>
+        <label htmlFor="password">Password</label>
+        <input name="password" type="password"></input>
+        <button type="submit">Create new Account</button>
       </form>
     </div>
   );
