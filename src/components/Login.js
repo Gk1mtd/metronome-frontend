@@ -22,7 +22,7 @@ function Login() {
 
   return (
     <div className="Login">
-      Login
+      <h1>Login</h1>
       {renderErrorParser()}{" "}
       {/**parses the error message from api hook to show the right message */}
       <form
