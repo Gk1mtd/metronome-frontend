@@ -5,10 +5,10 @@ import logo from "../assets/logo.webm"
 function Home() {
   return (
     <div className='Home'>
-      <h1>Home</h1>
-      <video autoPlay={true} width={200} loop={true} src={logo} alt='logo2' />
-      <br/>
+      <h1>Metro-Know-Me</h1>
+      <video autoPlay={true} loop={true} src={logo} alt='logo2' />
       <Link to='/signup'>Signup</Link>
+      <br/>
       <Link to='/login'>Login</Link>
     </div>
   );
