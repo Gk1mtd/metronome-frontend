@@ -1,31 +1,10 @@
 import React from "react";
 import userIcon from "../assets/acc image.png";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
-const { REACT_APP_API_URL } = process.env;
-const api = axios.create({
-  baseURL: REACT_APP_API_URL,
-  withCredentials: true,
-});
+import useSetlistAPI from "../customHooks/setlist.api";
 
 function Setlists() {
-  const [setlists, setSetlists] = React.useState([]);
-
-  /** creates a new setlist and calls getallSetlists for rerender again */
-  async function createSetlist(newSetlist) {
-    try {
-      await api.post("/setlist/create-setlist", { name: newSetlist });
-      getAllSetlists();
-    } catch (error) {}
-  }
-  /** retrieves all setlists from the current user, sets the state for auto rerender */
-  async function getAllSetlists() {
-    try {
-      const { data } = await api.get("setlist/getall-setlists");
-      setSetlists(data);
-    } catch (error) {}
-  }
+  const { setlists, createSetlist, getAllSetlists } = useSetlistAPI();
 
   React.useEffect(() => {
     getAllSetlists();
