@@ -27,17 +27,55 @@ video {
     margin: 0 35%;
     margin-bottom: 25px;
   }
+  .Signup form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    margin: 0 35%;
+  }
+  .Login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    margin: 0 35%;
+  }
 }
 
 button {
   font-size: 2rem;
-  background-color: rgb(87, 0, 53);
+  background-color: rgba(0, 0, 0, 0);
   color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0 2px 1px white;
+  padding: 5px;
+  margin-top: 25px;
 }
+button:hover {
+  box-shadow: 0 0 8px 2px white;
+}
+
 .Home {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.Signup form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: 0 15%;
+}
+.Login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: 0 15%;
 }
 
 .Error {
@@ -52,5 +90,5 @@ button {
 }
 
 .song-card {
-  background: rgba(23, 0, 29, 0.322)
+  background: rgba(23, 0, 29, 0.322);
 }
