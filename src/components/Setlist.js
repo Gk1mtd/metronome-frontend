@@ -40,6 +40,8 @@ function Setlist() {
 
   return (
     <div>
+    <Link to={`/setlists`}>back to Setlists</Link>
+    <br/>
       <h3>{setlist?.name}</h3>
       {setlist?.songs?.map((song) => (
         <div className="song-card" key={song._id}>
