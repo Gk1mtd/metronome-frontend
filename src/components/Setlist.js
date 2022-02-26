@@ -46,15 +46,15 @@ function Setlist() {
       <br />
       <h3>{setlist?.name}</h3>
       {setlist?.songs?.map((song) => (
-        <div>
-          <div className="song-card" key={song._id}>
+        <div key={song._id}>
+          <div className="song-card">
             <img src="" alt="▶" />
             <Link
               className="list-item"
               to={`/setlist/${setlistId}/song/${song._id}`}
             >
               <p>
-                {song.name} - {song.bpm} BPM 
+                {song.name} - {song.bpm} BPM
               </p>
             </Link>
           </div>

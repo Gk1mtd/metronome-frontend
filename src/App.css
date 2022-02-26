@@ -213,11 +213,12 @@ input {
   margin: 0;
   margin-bottom: 10px;
 }
-.song-buttons button {
+.song-buttons p {
   background: none;
   color: white;
   border: none;
   font-size: 1.5em;
+  width: 25%;
 }
 .Song textarea {
   font-size: 0.7em;
