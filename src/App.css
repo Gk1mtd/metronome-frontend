@@ -1,5 +1,13 @@
+/* variables */
+:root {
+  --backgroundcolor: #252526;
+  --green: #12b886;
+  --orange: #ff4600;
+  --blue: #479eea;
+}
+
 body {
-  background-color: #252526;
+  background-color: var(--backgroundcolor);
   font-size: 32px;
   color: white;
   width: 90%;
@@ -7,120 +15,259 @@ body {
   text-align: center;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-  border-radius: 15px;
-  box-shadow: 0 0 2px 1px white;
-  margin-bottom: 25px;
-}
-a:hover {
-  box-shadow: 0 0 8px 2px white;
-}
-video {
-  margin-bottom: 25px;
-}
-
-@media screen and (min-width: 480px) {
-  video {
-    width: 30%;
-    margin: 0 35%;
-    margin-bottom: 25px;
-  }
-  .Signup form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 30%;
-    margin: 0 35%;
-  }
-  .Login form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 30%;
-    margin: 0 35%;
-  }
-}
-
-button {
-  font-size: 2rem;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 0 2px 1px white;
-  padding: 5px;
-  margin-top: 25px;
-}
-button:hover {
-  box-shadow: 0 0 8px 2px white;
-}
-
+/* Home */
 .Home {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+.Home h2 {
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-top: 55px;
+  margin-bottom: -15px;
+}
+.Home p {
+  font-size: 0.7em;
+  margin-bottom: 5px;
+}
+.Home video {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+/* Link appeareance as buttons */
+.link-button {
+  text-decoration: none;
+  color: var(--orange);
+  border: 1px solid white;
+
+  border-radius: 90px;
+  margin-top: 15px;
+  padding: 1px 0 6px 0;
+}
+.link-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.3);
 }
 
-.Signup form {
+form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 70%;
-  margin: 0 15%;
-}
-.Login form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 70%;
-  margin: 0 15%;
+  width: 100%;
+  margin: auto;
 }
 input {
   font-size: 1em;
   text-align: center;
 }
 
-.Error {
-  background-color: tomato;
-  color: black;
-  font-size: 3em;
-  height: 100vh;
+/* Signup */
+.Signup,
+.Login {
+  display: flex;
+  flex-direction: column;
 }
-
-.user-icon-link {
-  box-shadow: none;
-  position: relative;
-  margin: 50px 0 0 85%;
-}
-.user-icon {
-  width: 50px;
-  border: none;
-  margin-top: 5%;
-  margin-right: 5%;
-}
-.Setlists a {
-  text-decoration: none;
-  color: white;
-  border-radius: 15px;
-  box-shadow: none;
-  margin-bottom: 25px;
-}
+/* Buttons */
+.Signup button,
+.Login button,
 .Setlists button {
-  font-size: 3rem;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  border: none;
-  box-shadow: none;
-  padding: 5px;
-  margin-top: 25px;
-}
-.setlist-card {
-  box-shadow: 0 0 2px 1px white;
-  border-radius: 15px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 90px;
+  color: var(--orange);
+  padding: 8px 20px;
+  margin: auto;
+  margin-top: 30px;
+  font-size: 0.9em;
+  width: 80%;
 }
 
+.delete-button {
+  color: white;
+  font-size: 1em;
+  margin-top: 20px;
+  background: none;
+  border: none;
+}
+
+/* Setlists and Setlist */
+.user-icon {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.user-icon img {
+  width: 64px;
+}
+.list-item {
+  display: block;
+  text-decoration: none;
+  color: var(--orange);
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.1);
+  border-radius: 90px;
+  margin: auto;
+  padding: 1px 0 6px 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.list-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.3);
+}
+/* Input form and + to add items */
+.add-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+.add-item input {
+  width: 100%;
+  display: inline;
+}
+.add-item button {
+  width: 20%;
+  color: white;
+  display: inline;
+  padding: 0;
+  line-height: 20px;
+  padding-bottom: 10px;
+  border: none;
+  font-size: 2em;
+  margin: auto;
+  border: none;
+  margin: auto;
+  background: none;
+}
+
+/* Setlist */
+.Setlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .song-card {
-  background: rgba(23, 0, 29, 0.322);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.song-card .list-item {
+  width: 90%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+
+  color: white;
+}
+
+.Setlist .link-button {
+  font-size: 1.1em;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* Song */
+.Song {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Song .delete-button {
+  background-color: tomato;
+  width: 30%;
+  border-radius: 90px;
+  margin: auto;
+  margin-top: 15px;
+}
+.save-button {
+  color: white;
+  font-size: 1em;
+  margin-top: 20px;
+  background-color: var(--green);
+  border: none;
+  border-radius: 90px;
+  width: 30%;
+  margin: auto;
+  margin-top: 15px;
+}
+.Song input {
+  margin: 10px;
+}
+
+.song-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.song-buttons button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.5em;
+}
+.Song textarea {
+  font-size: 0.7em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* for desktops */
+@media screen and (min-width: 810px) {
+  .Home {
+    display: flex;
+    flex-direction: column;
+  }
+  .Home video {
+    width: 30%;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  .link-button {
+    text-decoration: none;
+    color: var(--orange);
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.2);
+    border-radius: 90px;
+    margin: auto;
+    padding: 1px 0 6px 0;
+    margin-top: 15px;
+    width: 30%;
+  }
+  .link-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.3);
+  }
+  form {
+    width: 50%;
+  }
+
+  .setlist-item {
+    width: 60%;
+  }
+  .setlist-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.3);
+  }
 }
