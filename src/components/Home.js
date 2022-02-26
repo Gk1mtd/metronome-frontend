@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className='Home'>
       <h1>Metro-Know-Me</h1>
-      <video autoPlay={true} loop={true} src={logo} alt='logo2' />
+      <video muted={true} autoPlay={true} loop={true} src={logo} alt='logo2' />
       <Link to='/signup'>Signup</Link>
       <br/>
       <Link to='/login'>Login</Link>
