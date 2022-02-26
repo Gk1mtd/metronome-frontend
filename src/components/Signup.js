@@ -1,5 +1,6 @@
 import React from "react";
 import useAPI from "../customHooks/user.api";
+import { Link } from 'react-router-dom'
 
 /** uses api custom hook to sign up a new user */
 function Signup() {
@@ -7,6 +8,8 @@ function Signup() {
 
   return (
     <div className="Signup">
+          <Link to={`/login`}>back to Login</Link>
+
       <h1>Signup</h1>
       {responseMessage && <p>{responseMessage.message}</p>}
       <form
