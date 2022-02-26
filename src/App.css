@@ -81,13 +81,35 @@ input {
   font-size: 0.9em;
   width: 80%;
 }
-
-.delete-button {
+.save-button {
   color: white;
   font-size: 1em;
   margin-top: 20px;
+  background-color: var(--green);
+  border: none;
+  border-radius: 90px;
+  min-width: 40%;
+  margin: auto;
+  margin-top: 15px;
+  padding: 8px;
+}
+.logout-button{
   background: none;
   border: none;
+  color: white;
+  margin: 20px;
+  font-size: 1em;
+}
+.delete-button {
+  background-color: tomato;
+  padding: 8px;
+  border-radius: 90px;
+  font-size: 1em;
+  margin: auto;
+  margin-top: 15px;
+  border: none;
+  color: white;
+  min-width: 40%;
 }
 
 /* Setlists and Setlist */
@@ -179,24 +201,7 @@ input {
   flex-direction: column;
   justify-content: center;
 }
-.Song .delete-button {
-  background-color: tomato;
-  width: 30%;
-  border-radius: 90px;
-  margin: auto;
-  margin-top: 15px;
-}
-.save-button {
-  color: white;
-  font-size: 1em;
-  margin-top: 20px;
-  background-color: var(--green);
-  border: none;
-  border-radius: 90px;
-  width: 30%;
-  margin: auto;
-  margin-top: 15px;
-}
+
 .Song input {
   margin: 10px;
 }
@@ -227,10 +232,21 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
+.User {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+.button {
+   background: none;
+  border: none;
+  color: white;
+  margin: 20px;
+  font-size: 1em;
+}
+
+
+
 
 /* for desktops */
 @media screen and (min-width: 810px) {
