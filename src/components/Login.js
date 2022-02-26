@@ -22,8 +22,9 @@ function Login() {
 
   return (
     <div className="Login">
+      <Link className="link-button" to={`/signup`}>back to Signup</Link>
       <h1>Login</h1>
-      {renderErrorParser()}{" "}
+      {responseMessage?.message && renderErrorParser()}
       {/**parses the error message from api hook to show the right message */}
       <form
         onSubmit={(event) => {

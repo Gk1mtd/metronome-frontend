@@ -1,0 +1,126 @@
+body {
+  background-color: #252526;
+  font-size: 32px;
+  color: white;
+  width: 90%;
+  margin: 0 5% 15px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 2px 1px white;
+  margin-bottom: 25px;
+}
+a:hover {
+  box-shadow: 0 0 8px 2px white;
+}
+video {
+  margin-bottom: 25px;
+}
+
+@media screen and (min-width: 480px) {
+  video {
+    width: 30%;
+    margin: 0 35%;
+    margin-bottom: 25px;
+  }
+  .Signup form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    margin: 0 35%;
+  }
+  .Login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    margin: 0 35%;
+  }
+}
+
+button {
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0 2px 1px white;
+  padding: 5px;
+  margin-top: 25px;
+}
+button:hover {
+  box-shadow: 0 0 8px 2px white;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Signup form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: 0 15%;
+}
+.Login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: 0 15%;
+}
+input {
+  font-size: 1em;
+  text-align: center;
+}
+
+.Error {
+  background-color: tomato;
+  color: black;
+  font-size: 3em;
+  height: 100vh;
+}
+
+.user-icon-link {
+  box-shadow: none;
+  position: relative;
+  margin: 50px 0 0 85%;
+}
+.user-icon {
+  width: 50px;
+  border: none;
+  margin-top: 5%;
+  margin-right: 5%;
+}
+.Setlists a {
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  box-shadow: none;
+  margin-bottom: 25px;
+}
+.Setlists button {
+  font-size: 3rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  box-shadow: none;
+  padding: 5px;
+  margin-top: 25px;
+}
+.setlist-card {
+  box-shadow: 0 0 2px 1px white;
+  border-radius: 15px;
+}
+
+.song-card {
+  background: rgba(23, 0, 29, 0.322);
+}

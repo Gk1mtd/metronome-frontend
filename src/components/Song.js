@@ -20,9 +20,11 @@ function Song() {
   }
 
   return (
-    <div>
-    <Link to={`/setlist/${setlistId}`}>back to Setlist</Link>
-    <br/>
+    <div className="Song">
+      <Link className="link-button" to={`/setlist/${setlistId}`}>
+        back to Setlist
+      </Link>
+      <br />
       Song
       <form
         onSubmit={(event) => {
@@ -41,14 +43,19 @@ function Song() {
         <br />
         <input name="bpm" type="number" placeholder="BPM"></input>
         <br />
-        <button>-</button>
-        <button>+</button>
+        <div className="song-buttons">
+          <button>-</button>
+          <button>+</button>
+        </div>
         <br />
         <textarea name="notes" placeholder="Notes"></textarea>
         <br />
-        <button type="submit">Save</button>
+        <button className="save-button" type="submit">
+          Save
+        </button>
       </form>
       <button
+        className="delete-button"
         onClick={() => {
           deleteSong(setlistId, songId);
           navigateTo(-1);

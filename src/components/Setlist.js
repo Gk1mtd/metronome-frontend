@@ -39,19 +39,26 @@ function Setlist() {
   }, [setlist?.songs?.length]);
 
   return (
-    <div>
-    <Link to={`/setlists`}>back to Setlists</Link>
-    <br/>
+    <div className="Setlist">
+      <Link className="link-button" to={`/setlists`}>
+        back to Setlists
+      </Link>
+      <br />
       <h3>{setlist?.name}</h3>
       {setlist?.songs?.map((song) => (
-        <div className="song-card" key={song._id}>
-          <img src="" alt="Playbutton" />
-          <Link to={`/setlist/${setlistId}/song/${song._id}`}>
-            <div className="song-card-body">
-              <p>{song.name}</p>
-              <p>{song.bpm} BPM</p>
-            </div>
-          </Link>
+        <div>
+          <div className="song-card" key={song._id}>
+            <img src="" alt="▶" />
+            <Link
+              className="list-item"
+              to={`/setlist/${setlistId}/song/${song._id}`}
+            >
+              <p>
+                {song.name} - {song.bpm} BPM 
+              </p>
+            </Link>
+          </div>
+          <hr />
         </div>
       ))}
       <form
@@ -64,12 +71,15 @@ function Setlist() {
           event.target.name.value = "";
         }}
       >
-        <button type="submit">+</button>
-        <input name="name" placeholder="New Song Name"></input>
+        <div className="add-item">
+          <input name="name" placeholder="New Song Name"></input>
+          <button type="submit">+</button>
+        </div>
       </form>
       {/* {setlist && setlist?.songs.map((song) => <p>{song}</p>)} */}
       <br />
       <button
+        className="delete-button"
         onClick={() => {
           deleteSetlist();
           navigateTo("/setlists");
