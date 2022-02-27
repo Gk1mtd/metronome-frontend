@@ -1,27 +1,35 @@
-import "./App.css";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Setlists from "./components/Setlists";
-import Song from "./components/Song";
-import User from "./components/User";
-import Error from "./components/Error";
-import PrivateRoute from "./components/PrivateRoute";
-import Setlist from "./components/Setlist";
-import PublicRoute from "./components/PublicRoute";
-import { Routes, Route } from "react-router-dom";
-import React from "react";
+import './App.css';
+import Home from './components/Home';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Setlists from './components/Setlists';
+import Song from './components/Song';
+import User from './components/User';
+import Metronome from './components/Metronome';
+import Error from './components/Error';
+import PrivateRoute from './components/PrivateRoute';
+import Setlist from './components/Setlist';
+import PublicRoute from './components/PublicRoute';
+import { Routes, Route } from 'react-router-dom';
 
+import React from 'react';
 
 function App() {
-
   return (
-    <div className="App">
+    <div className='App'>
       {/** Private Routes */}
       <Routes>
         {/* add PrivateRoute Component to element property*/}
         <Route
-          path="/user"
+          path='/metronome'
+          element={
+            <PrivateRoute>
+              <Metronome />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/user'
           element={
             /** Private Route does have target component as child and 
             checks if user is in local storage, returns target component*/
@@ -31,7 +39,7 @@ function App() {
           }
         />
         <Route
-          path="/setlists"
+          path='/setlists'
           element={
             <PrivateRoute>
               <Setlists />
@@ -39,7 +47,7 @@ function App() {
           }
         />
         <Route
-          path="/setlist/:setlistId"
+          path='/setlist/:setlistId'
           element={
             <PrivateRoute>
               <Setlist />
@@ -47,7 +55,7 @@ function App() {
           }
         />
         <Route
-          path="/setlist/:setlistId/song"
+          path='/setlist/:setlistId/song'
           element={
             <PrivateRoute>
               <Song />
@@ -55,7 +63,7 @@ function App() {
           }
         />
         <Route
-          path="/setlist/:setlistId/song/:songId"
+          path='/setlist/:setlistId/song/:songId'
           element={
             <PrivateRoute>
               <Song />
@@ -66,7 +74,7 @@ function App() {
         {/** Public Routes - only for not users */}
         <Route
           exact
-          path="/"
+          path='/'
           element={
             <PublicRoute>
               <Home />
@@ -74,7 +82,7 @@ function App() {
           }
         />
         <Route
-          path="/signup"
+          path='/signup'
           element={
             <PublicRoute>
               <Signup />
@@ -82,14 +90,14 @@ function App() {
           }
         />
         <Route
-          path="/login"
+          path='/login'
           element={
             <PublicRoute>
               <Login />
             </PublicRoute>
           }
         />
-        <Route path="/*" element={<Error />} />
+        <Route path='/*' element={<Error />} />
       </Routes>
     </div>
   );
