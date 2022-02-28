@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Implements an Metronome
@@ -8,7 +8,9 @@ import React from 'react';
  * start with audioContext.resume()
  * stop with  audioContext.suspend()
  */
-function Metronome() {
+function Metronome({ bpm }) {
+  const [userInputBpmState, setUserInputBpmState] = React.useState(bpm);
+
   /** +++++++++++++++++++++++++
    * source: https://blog.paul.cx/post/metronome/
    *  */
@@ -26,7 +28,6 @@ function Metronome() {
   }
   // +++++++++++++++++++++++++
   /** takes input from user and makes sure it is an integer and between min and max tempo values */
-  const [userInputBpmState, setUserInputBpmState] = React.useState(120);
   function getTempo() {
     return clampTempo(parseInt(userInputBpmState));
   }
@@ -34,71 +35,76 @@ function Metronome() {
   // METRONOME CORE
 
   /**First we need to set an AudioContext to be able to use the Web Audio API */
-  const audioContext = new AudioContext();
 
   /** genereal setup */
-  function setupMetronome() {
-    /** creates audiobuffer in the right size */
-    const audioBuffer = audioContext.createBuffer(
-      1,
-      audioContext.sampleRate * 2,
-      audioContext.sampleRate
-    );
-    /** get channel: Mono? */
-    const channel = audioBuffer.getChannelData(0);
 
-    // Synthesize Sound/Click
-    let phase = 0;
-    let amp = 1;
-    const durationOfSound = audioContext.sampleRate / 50;
-    const frequency = 440;
+  let audioContext = new AudioContext();
+  /** creates audiobuffer in the right size */
+  let audioBuffer = audioContext.createBuffer(
+    1,
+    audioContext.sampleRate * 2,
+    audioContext.sampleRate
+  );
+  /** get channel: Mono? */
+  let channel = audioBuffer.getChannelData(0);
 
-    for (var i = 0; i < durationOfSound; i++) {
-      channel[i] = Math.sin(phase) * amp;
-      phase += (2 * Math.PI * frequency) / audioContext.sampleRate;
-      if (phase > 2 * Math.PI) {
-        phase -= 2 * Math.PI;
-      }
-      amp -= 1 / durationOfSound;
+  // Synthesize Sound/Click
+  let phase = 0;
+  let amp = 1;
+  let durationOfSound = audioContext.sampleRate / 50;
+  let frequency = 440;
+
+  for (let i = 0; i < durationOfSound; i++) {
+    channel[i] = Math.sin(phase) * amp;
+    phase += (2 * Math.PI * frequency) / audioContext.sampleRate;
+    if (phase > 2 * Math.PI) {
+      phase -= 2 * Math.PI;
     }
-
-    const audioSource = audioContext.createBufferSource();
-    audioSource.buffer = audioBuffer;
-    audioSource.loop = true;
-    audioSource.loopEnd = 1 / (getTempo() / 60);
-
-    // connect source with context
-    audioSource.connect(audioContext.destination);
-    audioSource.start(0);
+    amp -= 1 / durationOfSound;
   }
+
+  let audioSource = audioContext.createBufferSource();
+  audioSource.buffer = audioBuffer;
+  audioSource.loop = true;
+  audioSource.loopEnd = 1 / (getTempo() / 60);
+
+  // connect source with context
+  audioSource.connect(audioContext.destination);
+  audioSource.start(0);
+  audioContext.suspend();
 
   // audioContext.resume = start
   // audioContext.suspend = stop
+  const [toggle, setToggle] = React.useState(false);
+
+  async function unMount() {
+    console.log("unmount");
+    if (audioContext.state === "running") {
+      await audioContext.suspend();
+    } else if (audioContext.state === "suspended") {
+      await audioContext.resume();
+    }
+  }
 
   React.useEffect(() => {
-    console.log('useEffet');
-  }, [userInputBpmState]);
-  function startClick() {
-    setupMetronome();
-    audioContext.resume();
-  }
-  function stopClick() {
-    audioContext.suspend();
-  }
-  function handleInputChange({ target }) {
-    stopClick();
-    console.log(target.value);
-    if (target.value < 30) {
-      target.value = 30;
-    }
-    setUserInputBpmState(target.value);
-  }
+    return () => {
+      unMount();
+    };
+  }, []);
+
   return (
     <div>
-      <h1>Metronome</h1>
-      <input type='number' onChange={handleInputChange} />
-      <button onClick={startClick}>Start</button>
-      <button onClick={stopClick}>Stop</button>
+      <button
+        onClick={async function () {
+          if (audioContext.state === "running") {
+            await audioContext.suspend();
+          } else if (audioContext.state === "suspended") {
+            await audioContext.resume();
+          }
+        }}
+      >
+        {audioContext.state === "running" ? "◼" : "▶"}
+      </button>
     </div>
   );
 }
