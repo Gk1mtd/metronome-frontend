@@ -9,6 +9,7 @@
 body {
   /* background-color: var(--backgroundcolor); */
   font-size: 32px;
+  background-color: var(--backgroundcolor);
   color: white;
   width: 90%;
   margin: 0 5% 15px;
