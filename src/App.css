@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: var(--backgroundcolor);
+  /* background-color: var(--backgroundcolor); */
   font-size: 32px;
   color: white;
   width: 90%;
@@ -93,7 +93,7 @@ input {
   margin-top: 15px;
   padding: 8px;
 }
-.logout-button{
+.logout-button {
   background: none;
   border: none;
   color: white;
@@ -220,11 +220,28 @@ input {
   font-size: 1.5em;
   width: 25%;
 }
-.Song textarea {
-  font-size: 0.7em;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.play-stop-button {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 100%;
+  align-content: center;
+  width: 70px;
+  height: 70px;
+  margin-right: 4px;
 }
 
+.play-stop-button img {
+  width: 40px;
+  margin: auto;
+
+}
+
+.Song textarea {
+  font-size: 0.7em;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -239,15 +256,12 @@ input::-webkit-inner-spin-button {
   justify-content: center;
 }
 .button {
-   background: none;
+  background: none;
   border: none;
   color: white;
   margin: 20px;
   font-size: 1em;
 }
-
-
-
 
 /* for desktops */
 @media screen and (min-width: 810px) {
