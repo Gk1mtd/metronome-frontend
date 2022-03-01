@@ -42,7 +42,7 @@ function Click({ bpm }) {
   let phase = 0;
   let amp = 1;
   let durationOfSound = audioContext.sampleRate / 50;
-  let frequency = 100;
+  let frequency = 440;
 
   for (let i = 0; i < durationOfSound; i++) {
     channel[i] = Math.sin(phase) * amp;
