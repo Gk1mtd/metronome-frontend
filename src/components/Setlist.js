@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Metronome from "./Metronome";
 const { REACT_APP_API_URL } = process.env;
 
 function Setlist() {
@@ -48,7 +49,7 @@ function Setlist() {
       {setlist?.songs?.map((song) => (
         <div key={song._id}>
           <div className="song-card">
-            <img src="" alt="▶" />
+            <Metronome bpm={song.bpm} />
             <Link
               className="list-item"
               to={`/setlist/${setlistId}/song/${song._id}`}
