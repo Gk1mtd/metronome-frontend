@@ -231,6 +231,7 @@ input {
   width: 70px;
   height: 70px;
   margin-right: 4px;
+  background: none;
 }
 
 .play-stop-button img {
