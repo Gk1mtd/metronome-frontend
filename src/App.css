@@ -12,7 +12,7 @@ body {
   background-color: var(--backgroundcolor);
   color: white;
   width: 90%;
-  margin: 0 5% 15px;
+  margin: 2% 5% 2%;
   text-align: center;
 }
 
@@ -89,17 +89,25 @@ input {
   background-color: var(--green);
   border: none;
   border-radius: 90px;
-  min-width: 40%;
+  min-width: 40vw;
   margin: auto;
   margin-top: 15px;
   padding: 8px;
 }
 .logout-button {
   background: none;
-  border: none;
+  width: 40vw;
+  margin: auto;
+  border: 1px solid white;
+  border-radius: 90px;
   color: white;
-  margin: 20px;
   font-size: 1em;
+  cursor: pointer;
+}
+
+.logout-button:hover,
+.delete-button:hover {
+  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.3);
 }
 .delete-button {
   background-color: tomato;
@@ -110,7 +118,8 @@ input {
   margin-top: 15px;
   border: none;
   color: white;
-  min-width: 40%;
+  min-width: 40vw;
+  cursor: pointer;
 }
 
 /* Setlists and Setlist */
@@ -143,7 +152,7 @@ input {
 /* Input form and + to add items */
 .add-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   margin-top: 20px;
 }
@@ -178,8 +187,13 @@ input {
   align-items: center;
 }
 
+.song-card p {
+  position: relative;
+  left: -35px;
+}
+
 .song-card .list-item {
-  width: 90%;
+  width: 100%;
   padding: 0;
   margin: 0;
   border: none;
@@ -235,14 +249,13 @@ input {
 }
 
 .play-stop-button img {
-  width: 40px;
+  width: 50px;
   margin: auto;
-
 }
 
 .Song textarea {
   font-size: 0.7em;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Chrome, Safari, Edge, Opera */
