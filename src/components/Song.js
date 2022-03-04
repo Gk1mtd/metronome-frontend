@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import plus from "../assets/plus.png"
+import minus from "../assets/minus.png"
 const { REACT_APP_API_URL } = process.env;
 
 function Song() {
@@ -69,8 +71,12 @@ function Song() {
         <input onChange={handleChange} name="bpm" type="number" placeholder="BPM"  value={songData.bpm}></input>
         <br />
         <div className="song-buttons">
-          <p>-</p>
-          <p>+</p>
+        <img className="plus-minus" src={minus} onClick={()=>{
+            setSongData({...songData, bpm: songData.bpm-1})
+          }} alt="minus symbol"/>
+          <img className="plus-minus" src={plus} onClick={()=>{
+            setSongData({...songData, bpm: songData.bpm+1})
+          }} alt="plus symbol"/>
         </div>
         <br />
         <textarea  onChange={handleChange} name="note" placeholder="Notes" value={songData.note}></textarea>
