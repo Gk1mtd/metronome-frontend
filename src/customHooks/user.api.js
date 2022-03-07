@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 /**
  * easy to import hardcoded paths, used across the whole project
  */
-const { REACT_APP_API_URL } = process.env;
+//const REACT_APP_API_URL = process.env;
 
 /** provides the app with MERN functionality */
 function useAPI() {
@@ -13,7 +13,7 @@ function useAPI() {
   const navigateTo = useNavigate();
 
   const api = axios.create({
-    baseURL: REACT_APP_API_URL,
+    baseURL: process.env.REACT_APP_API_URL, 
     withCredentials: true,
   });
 
