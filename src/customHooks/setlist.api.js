@@ -23,7 +23,7 @@ function useSetlistAPI() {
   /** creates a new setlist and calls getallSetlists for rerender again */
   async function createSetlist(newSetlist) {
     try {
-      await api.post("/setlist/create-setlist", { name: newSetlist });
+      await api.post("/setlist/create-setlist", { name: newSetlist }, { withCredentials: true });
       getAllSetlists();
     } catch (error) {}
   }
@@ -31,7 +31,7 @@ function useSetlistAPI() {
   /** retrieves all setlists from the current user, sets the state for auto rerender */
   async function getAllSetlists() {
     try {
-      const { data } = await api.get("setlist/getall-setlists");
+      const { data } = await api.get("setlist/getall-setlists", { withCredentials: true });
       setSetlists(data);
     } catch (error) {}
   }
