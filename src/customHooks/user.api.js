@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 /**
  * easy to import hardcoded paths, used across the whole project
  */
-//const REACT_APP_API_URL = process.env;
+const { REACT_APP_API_URL } = process.env;
 
 /** provides the app with MERN functionality */
 function useAPI() {
@@ -13,14 +13,14 @@ function useAPI() {
   const navigateTo = useNavigate();
 
   const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL, 
+    baseURL: REACT_APP_API_URL,
     withCredentials: true,
   });
 
   async function login(user) {
     try {
       // get response from API
-      const { data } = await api.post('/login', user, { withCredentials: true });
+      const { data } = await api.post('/login', user);
       /** saves user id from api response into local storage
        *  user id can be accessed for private routing
        *  router can recognise if user is logged in
@@ -39,7 +39,7 @@ function useAPI() {
   /** creates new user with api call */
   async function submitNewUser(newUser) {
     try {
-      await api.post('/signup', newUser, { withCredentials: true });
+      await api.post('/signup', newUser);
       navigateTo('/login');
     } catch (error) {
       setResponseMessage({ message: error.response.data.message });
@@ -53,7 +53,7 @@ function useAPI() {
   async function logout() {
     try {
       localStorage.clear();
-      await api.post('/logout', { withCredentials: true });
+      await api.post('/logout');
       navigateTo('/');
     } catch (error) {
       console.error(error);
@@ -64,7 +64,7 @@ function useAPI() {
   /** deletes user through api call, calls logout to deletes localstorage and redirect to home */
   async function deleteUser() {
     try {
-      await api.delete('/deleteuser', { withCredentials: true });
+      await api.delete('/delete-user');
       logout();
     } catch (error) {
       console.error(error);
