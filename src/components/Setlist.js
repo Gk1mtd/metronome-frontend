@@ -1,7 +1,8 @@
-import React from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import Metronome from './Metronome';
+import React from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Metronome from "./Metronome";
+import deleteButton from "../assets/delete button.png";
 const { REACT_APP_API_URL } = process.env;
 
 function Setlist() {
@@ -15,10 +16,10 @@ function Setlist() {
 
   async function createSong(songBody) {
     try {
-      await api.post('/song', songBody);
+      await api.post("/song", songBody);
       getSetlist();
     } catch (error) {
-      console.error('Something went wrong during song creation', error);
+      console.error("Something went wrong during song creation", error);
     }
   }
   async function getSetlist() {
@@ -40,18 +41,29 @@ function Setlist() {
   }, [setlist?.songs?.length]);
 
   return (
-    <div className='Setlist'>
-      <Link className='link-button' to={`/setlists`}>
+    <div className="Setlist">
+      <Link className="link-button" to={`/setlists`}>
         back to Setlists
       </Link>
       <br />
-      <h3>{setlist?.name}</h3>
-      {setlist?.songs?.map(song => (
+      <div className="setlist-name">
+        <h3>{setlist?.name}</h3>
+        <img
+          src={deleteButton}
+          className="delete-button-round"
+          onClick={() => {
+            deleteSetlist();
+            navigateTo("/setlists");
+          }}
+          alt="delete button"
+        />
+      </div>
+      {setlist?.songs?.map((song) => (
         <div key={song._id}>
-          <div className='song-card'>
+          <div className="song-card">
             <Metronome bpm={song.bpm} />
             <Link
-              className='list-item'
+              className="list-item"
               to={`/setlist/${setlistId}/song/${song._id}`}
             >
               <p>
@@ -65,32 +77,23 @@ function Setlist() {
         </div>
       ))}
       <form
-        onSubmit={event => {
+        onSubmit={(event) => {
           event.preventDefault();
           createSong({
             name: event.target.name.value,
             setlistId,
           });
-          event.target.name.value = '';
+          event.target.name.value = "";
         }}
       >
-        <div className='add-item'>
-          <input name='name' placeholder='New Song Name'></input>
+        <div className="add-item">
+          <input name="name" placeholder="New Song Name"></input>
           <br />
-          <button type='submit'>+</button>
+          <button type="submit">+</button>
         </div>
       </form>
       {/* {setlist && setlist?.songs.map((song) => <p>{song}</p>)} */}
       <br />
-      <button
-        className='delete-button'
-        onClick={() => {
-          deleteSetlist();
-          navigateTo('/setlists');
-        }}
-      >
-        Delete Setlist
-      </button>
     </div>
   );
 }

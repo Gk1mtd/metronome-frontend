@@ -121,6 +121,12 @@ input {
   min-width: 40vw;
   cursor: pointer;
 }
+.delete-button-round{
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  display: inline;
+}
 
 /* Setlists and Setlist */
 .user-icon {
@@ -180,6 +186,12 @@ input {
   flex-direction: column;
   justify-content: center;
 }
+.setlist-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 .song-card {
   display: flex;
   justify-content: space-between;
@@ -192,13 +204,12 @@ input {
 }
 
 .song-card .list-item {
-  width: auto;
+  width: 50%;
   padding: 0;
   margin: auto;
   border: none;
   background: none;
   box-shadow: none;
-
   color: white;
 }
 .plus-minus {
@@ -245,7 +256,6 @@ input {
 .play-stop-button img {
   width: 100%;
   margin: auto;
-  background-color: #ff4600;
 }
 
 .Song textarea {
