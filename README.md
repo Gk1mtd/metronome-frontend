@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# MetronoMe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+![wireframe](https://github.com/ignazka/metronome-backend/blob/master/wireframe.png?raw=true)
+An application for musicians.
+Artists are able to create setlists with BPM next to the song. BPM is editable.
 
-## Available Scripts
+## Backlog
+* Fullscreen visualization of beat
+* Different Click Sounds
+* Tapping function
+* Maybe a Tuner
 
-In the project directory, you can run:
+## ROUTES:
+GUESTs
+- POST /login
+  - gets email and password
+  - checks credentials
+    - sends 200 if ok, sends user.object back
+    - sends 400 if password or mail is missing
+    - sends 400 if user not found
+    - - sends 400 if password is wrong
+    - sends 500 if server error occurs
+  - writes a user in session
+- POST /signup
+  - gets email and password
+  - compares password and password-confimation
+  - sends 400 if passwords not equal
+  - sends 400 if user in use already
+  - generates password hash
+  - saves user in database
+  - writes a user in session
+PRIVATEs
+- DELETE /delete 
+  - deletes user from database and all his items in database
+  - delete user in session.object
+- POST /logout
+  - log out user // delete user in session.object
+- GET /is-logged-in
+  - sends back session-user
+- setlist
+  - POST /setlist
+    - creates new setlist
+  - GET /setlist/:id
+    - returns setlist by id
+  - PUT /setlist/:id
+    - saves changes in setlist
+  - DELETE /setlist/:id
+    - deletes setlist
+- song
+  - POST /song
+    - creates new setlist
+  - GET /song/:id
+    - get song by id
+  - PUT /song/:id
+    - saves changes in song
+  - DELETE /song/:id
+    - deletes song
 
-### `npm start`
+## Models
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+User model
+ 
+```
+email: String, required, unique
+password: String, required
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Setlist model
+```
+name: String, required, unique
+user: [Object_id ref: user_id]
+songs: [Object_id ref: songs_id]
+```
+Song model
+```
+name: String, required
+songs: [Object_id ref: songs_id]
+BPM: Number, required
+Notes: String
+```
 
-### `npm test`
+## Links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Trello/Kanban
 
-### `npm run build`
+[Link to our Kanban board]()
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The url to your repository and to your deployed project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Repository Link]()
 
-### `npm run eject`
+[Deploy Link]()
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Slides
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The url to your presentation slides
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Presentation Link]()
