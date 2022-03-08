@@ -165,13 +165,12 @@ input {
   color: white;
   display: inline;
   padding: 0;
-  line-height: 20px;
   padding-bottom: 10px;
+  line-height: 20px;
   border: none;
   font-size: 2em;
   margin: auto;
-  border: none;
-  margin: auto;
+  margin-top: 15px;
   background: none;
 }
 
@@ -193,9 +192,9 @@ input {
 }
 
 .song-card .list-item {
-  width: 100%;
+  width: auto;
   padding: 0;
-  margin: 0;
+  margin: auto;
   border: none;
   background: none;
   box-shadow: none;
@@ -239,26 +238,19 @@ input {
   width: 25%;
 }
 .play-stop-button {
-  border: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 100%;
-  align-content: center;
   width: 70px;
   height: 70px;
-  margin-right: 4px;
-  background: none;
 }
 
 .play-stop-button img {
-  width: 50px;
+  width: 100%;
   margin: auto;
+  background-color: #ff4600;
 }
 
 .Song textarea {
   font-size: 0.7em;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Chrome, Safari, Edge, Opera */
