@@ -38,7 +38,6 @@ function Setlists() {
       >
         <div className='add-item'>
           <input name='name' placeholder='New Setlist Name'></input>
-          <br />
           <button type='submit'>+</button>
         </div>
       </form>

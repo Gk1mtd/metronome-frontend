@@ -1,8 +1,7 @@
 import React from "react";
 import Click from "./Click";
-import play from "../assets/play.png"
-import stop from "../assets/stop.png"
-
+import play from "../assets/play.png";
+import stop from "../assets/stop.png";
 
 /**
  * Implements an Metronome
@@ -20,7 +19,11 @@ function Metronome({ bpm }) {
 
   return (
     <div className="Metronome">
-      <button className="play-stop-button" onClick={() => setToggle(!toggle)}>{!toggle ? <img src={play} alt="play button"/> : <img src={stop} alt="stop button"/>}</button>
+        {!toggle ? (
+          <img className="play-stop-button" onClick={() => setToggle(!toggle)} src={play} alt="play button" />
+        ) : (
+          <img className="play-stop-button" onClick={() => setToggle(!toggle)} src={stop} alt="stop button" />
+        )}
       {toggle && <Click bpm={bpm} />}
     </div>
   );
