@@ -84,18 +84,20 @@ Notes: String
 
 ### Trello/Kanban
 
-[Link to our Kanban board]()
+[Link to our Kanban board](https://github.com/Gk1mtd/metronome-frontend/projects/2)
+[Link to our Kanban board](https://github.com/ignazka/metronome-backend/projects/1)
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Repository Link]()
+[Repository Link](https://github.com/Gk1mtd/metronome-frontend)
+[Repository Link](https://github.com/ignazka/metronome-backend)
 
-[Deploy Link]()
+[Deploy Link](https://metroknowme.netlify.app/)
 
 ### Slides
 
 The url to your presentation slides
 
-[Presentation Link]()
+[Presentation Link](https://docs.google.com/presentation/d/1ZCKBSu7FJ9lfcw74r1-Y0maNtJMPArrtQ5XrV6cSYzI/edit?usp=sharing)
