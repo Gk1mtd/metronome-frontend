@@ -2,6 +2,7 @@
 
 ## Description
 ![wireframe](https://github.com/ignazka/metronome-backend/blob/master/wireframe.png?raw=true)
+https://youtu.be/D7-929Xh8yo
 An application for musicians.
 Artists are able to create setlists with BPM next to the song. BPM is editable.
 
