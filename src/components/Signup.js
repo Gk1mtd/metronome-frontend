@@ -28,14 +28,15 @@ function Signup() {
             setPasswordsNotTheSameMessage({
               message: 'passwords do not match',
             });
-          }
-          setPasswordsNotTheSameMessage(null);
+          } else {
+            setPasswordsNotTheSameMessage(null);
 
-          const newUser = {
-            email: event.target.email.value,
-            password: event.target.password.value,
-          };
-          submitNewUser(newUser);
+            const newUser = {
+              email: event.target.email.value,
+              password: event.target.password.value,
+            };
+            submitNewUser(newUser);
+          }
         }}
       >
         <label htmlFor='email'>Email</label>
